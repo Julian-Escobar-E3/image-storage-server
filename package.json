@@ -1,0 +1,40 @@
+{
+  "name": "subidaimgs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec npx ts-node src/index.ts"
+  },
+  "keywords": [
+    "idk",
+    "image storage"
+  ],
+  "author": "julian-escobar <julian.escobar.priv1@gmail.com>",
+  "license": "MIT",
+  "description": "Image Server Storage in Typescript",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "formdata-node": "^4.4.1",
+    "fs-extra": "^11.2.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.3",
+    "typescript": "^5.4.5",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/express-fileupload": "^1.5.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/morgan": "^1.9.9",
+    "@types/multer": "^1.4.11",
+    "@types/sharp": "^0.32.0",
+    "@types/uuid": "^9.0.8",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
+  }
+}
