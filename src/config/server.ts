@@ -34,7 +34,7 @@ export default class Server {
   start(): void {
     const auxPort = this.app.get("PORT");
     this.app.listen(auxPort, () => {
-      console.log(`🚀Server is running on http://localhost:${auxPort}/api/`);
+      console.log(`🚀Server is running on http://localhost:${auxPort}/api/images`);
     });
   }
 }

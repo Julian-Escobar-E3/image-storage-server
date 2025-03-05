@@ -9,6 +9,6 @@ export const SIZE_OPTIONS = {
   },
   sm: {
     name: "sm",
-    width: 200,
+    width: 100,
   },
 };

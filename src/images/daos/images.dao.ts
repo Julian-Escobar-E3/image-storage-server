@@ -1,7 +1,7 @@
 import fs from "fs-extra";
+import sharp from "sharp";
 import { configDotenv } from "dotenv";
 import { SIZE_OPTIONS } from "../../utilities/size-options";
-import sharp from "sharp";
 
 configDotenv();
 
@@ -36,6 +36,10 @@ export default class ImagesDAO {
   ): Promise<string | null> {
     const imagePath = `${process.env.FOLDER}/${category}/${fileFolder}/`;
     try {
+      if (fs.pathExistsSync(imagePath)) {
+        console.log("There is already an image with that name");
+        return null;
+      }
       await fs.ensureDir(imagePath); //Crear el directorio si no existe
       const resizePromise = Object.values(SIZE_OPTIONS).map((size) =>
         sharp(newImage.data)
@@ -86,7 +90,9 @@ export default class ImagesDAO {
         await fs.remove(filePath);
         return "Image was delete.";
       } else {
-        console.log("Error, the old image data cannot be deleted.");
+        console.log(
+          "Error, the image data cannot be deleted, directory not found."
+        );
         return null;
       }
     } catch (error: any) {

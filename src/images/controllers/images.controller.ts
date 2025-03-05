@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import ImagesDAO from "../daos/images.dao";
 import { ValidPaths } from "../../enums/valid-paths";
+
 class ImagesController extends ImagesDAO {
   async getImg(req: Request, res: Response) {
     const { filename, category } = req.params;
@@ -42,14 +43,15 @@ class ImagesController extends ImagesDAO {
         newImg
       );
       if (!response) {
-        return res
-          .status(400)
-          .json({ Message: "Error in uploading image process" });
+        return res.status(400).json({
+          Message:
+            "Error in upload image process, make sure the name is unique.",
+        });
       }
       res.status(201).json({ data: response });
     } catch (error) {
       console.error("Error in uploadImg method:", error);
-      res.status(500).json({ Message: "Internal server error" });
+      res.status(418).json({ Message: "Internal server error" });
     }
   }
   async updatedImg(req: Request, res: Response) {
@@ -73,14 +75,15 @@ class ImagesController extends ImagesDAO {
         updatedImg
       );
       if (!response) {
-        return res
-          .status(400)
-          .json({ Message: "Error in uploading image process" });
+        return res.status(400).json({
+          Message:
+            "Error in updated image process, make sure the name is unique.",
+        });
       }
       res.status(200).json({ data: response });
     } catch (error) {
       console.error("Error in uploadImg method:", error);
-      res.status(400).json({ Message: "Internal server error" });
+      res.status(418).json({ Message: "Internal server error" });
     }
   }
 
@@ -92,13 +95,16 @@ class ImagesController extends ImagesDAO {
       if (!response) {
         return res
           .status(400)
-          .json({ Message: "Error in delete image process" });
+          .json({
+            Message:
+              "Error in delete image process, make sure the path is correct",
+          });
       }
 
       res.status(200).json({ data: response });
     } catch (error) {
       console.error("Error delete method:", error);
-      res.status(400).json({ Message: "Internal server error" });
+      res.status(418).json({ Message: "Internal server error" });
     }
   }
 }
